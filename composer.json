@@ -1,0 +1,29 @@
+{
+  "name": "oliverthiele/ot-febuild",
+  "type": "typo3-cms-extension",
+  "description": "This Extension is only a target for a webpack frontend build",
+  "homepage": "https://www.oliver-thiele.de/",
+  "license": [
+    "GPL-2.0-or-later"
+  ],
+  "keywords": [
+    "typo3",
+    "cms"
+  ],
+  "require": {
+    "typo3/cms-core": "^10.4||^11.5||^12.4"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-latest"
+  },
+  "autoload": {
+    "psr-4": {
+      "OliverThiele\\OtFebuild\\": "Classes/"
+    }
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "ot_febuild"
+    }
+  }
+}
