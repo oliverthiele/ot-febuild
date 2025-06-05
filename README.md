@@ -1,16 +1,40 @@
-# Extension ot_febuild
+# ot_febuild – Webpack Build Target Extension for TYPO3
 
-This extension provides a single target for my webpack frontend build. 
-This keeps your own site package free from compiled data and makes it easier to fully synchronize with the IDE.
+This TYPO3 extension provides a clean, Composer-friendly target for frontend
+build artifacts (e.g. from Webpack). It helps keep your sitepackage free from
+compiled output and allows better IDE synchronization and
+version control separation.
 
-The build instructions also copy all other necessary files in the Resources/Public/Assets folder.
+The build process should output all assets (CSS, JS, fonts, icons, etc.)
+into the folder:
 
-By using this extension, TYPO3 can automatically include version numbers (timestamps) in the file names (versionNumberInFilename).
-For example, TYPO3 v12/v13 also automatically creates a symlink under public/_assets/ for the public folder.
+`EXT:ot_febuild/Resources/Public/Assets/`
 
-## Integration in TypoScript
+TYPO3 automatically handles cache busting via `versionNumberInFilename`
+and – in TYPO3 v12 and v13 – symlinks the public directory under:
 
-**Example of including the CSS and JS via the TypoScript code:**
+`public/_assets/`
+
+---
+
+## ✅ Benefits
+
+- Keeps generated files out of your sitepackage and Git history
+- TYPO3 can resolve paths via `EXT:ot_febuild/...` for JS/CSS includes
+- Compatible with `versionNumberInFilename` and TYPO3 v12+ public asset handling
+- Ideal for use in Composer-based installations
+
+---
+
+## 📦 Installation
+
+```bash
+composer require oliverthiele/ot-febuild
+```
+
+## 🔧 Integration via TypoScript
+
+Example configuration:
 
 ```typo3_typoscript
 page {
@@ -19,19 +43,31 @@ page {
 }
 ```
 
-All other resources that the build process has processed are then located, for example, in the path:
+Additional assets (e.g. icons, fonts) are also available under:
 
-`packages/ot_febuild/Resources/Public/Assets/...`
+`EXT:ot_febuild/Resources/Public/Assets/`
 
-This also includes Fontawesome icons, which can be found in the SVG subfolder (If my frontend build configuration is used)
 
-## Example update from DDEV to dev.example.com website
+If you're using the corresponding frontend build configuration, Font Awesome SVG icons are available in:
 
-1. via Deployment
-2. via rsync (without --dry-run)
+`EXT:ot_febuild/Resources/Public/Assets/SVG/`
+
+---
+
+## 🔁 Deployment Example (DDEV → Live Server)
 
 ```shell
 rsync -avzP -e 'ssh -p 22' --progress --dry-run \
     /var/www/html/vendor/oliverthiele/ot-febuild/Resources/Public/Assets/ \
     user@dev.example.com:/usr/home/user/public_html/typo3-dev/packages/ot_febuild/Resources/Public/Assets
 ```
+You can automate this as part of your deployment or build pipeline.
+
+---
+
+## 📝 License
+
+This project is licensed under the GNU General Public License v2.0 or later
+(GPL-2.0-or-later).
+
+---

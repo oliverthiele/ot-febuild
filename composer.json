@@ -1,21 +1,30 @@
 {
-  "name": "oliverthiele/ot-febuild",
-  "type": "typo3-cms-extension",
-  "description": "This Extension is only a target for my webpack frontend build (not included)",
-  "homepage": "https://www.oliver-thiele.de/",
-  "license": [
-    "GPL-2.0-or-later"
-  ],
-  "keywords": [
-    "typo3",
-    "cms"
-  ],
-  "require": {
-    "typo3/cms-core": "*"
-  },
-  "extra": {
-    "typo3/cms": {
-      "extension-key": "ot_febuild"
-    }
-  }
+	"name": "oliverthiele/ot-febuild",
+	"type": "typo3-cms-extension",
+  "description": "TYPO3 extension that serves as a target for frontend build output (e.g. from Webpack). No assets included.",
+	"homepage": "https://www.oliver-thiele.de/",
+  "license": "GPL-2.0-or-later",
+	"keywords": [
+		"typo3",
+		"cms",
+		"webpack",
+		"frontend",
+		"build",
+		"assets"
+	],
+	"authors": [
+		{
+			"name": "Oliver Thiele",
+			"email": "mail@oliver-thiele.de",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"typo3/cms-core": "*"
+	},
+	"extra": {
+		"typo3/cms": {
+			"extension-key": "ot_febuild"
+		}
+	}
 }
